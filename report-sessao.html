@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Report — Arthur LP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Josefin+Sans:wght@300;400;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0C1826;
+      --border: rgba(255,255,255,0.07);
+      --text: #F0EDE8;
+      --mid: #8899AA;
+      --dim: #6B8299;
+      --accent: #C8A96E;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { overflow-x: hidden; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 80px 40px 120px;
+    }
+
+    /* HEADER */
+    .header {
+      margin-bottom: 72px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header__label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .header__title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 5vw, 44px);
+      font-weight: 600;
+      line-height: 1.12;
+      margin-bottom: 16px;
+    }
+
+    .header__title em { font-weight: 400; font-style: italic; }
+
+    .header__meta {
+      font-size: 13px;
+      color: var(--dim);
+      margin-top: 20px;
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .header__meta span strong { color: var(--mid); font-weight: 500; }
+
+    /* SECTION */
+    .s {
+      margin-bottom: 60px;
+    }
+
+    .s__num {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .s__title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .s__body {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.85;
+    }
+
+    .s__body p + p { margin-top: 14px; }
+
+    /* ITEMS */
+    .items {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .item__dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.5;
+      flex-shrink: 0;
+      margin-top: 10px;
+    }
+
+    .item p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.75;
+    }
+
+    .item p strong { color: var(--text); font-weight: 500; }
+
+    /* NARRATIVE */
+    .rows {
+      margin-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .row__label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .row__text {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* QUOTE */
+    .quote {
+      margin-top: 24px;
+      padding: 18px 22px;
+      border-left: 2px solid var(--accent);
+      background: rgba(200,169,110,0.04);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-style: italic;
+      color: var(--mid);
+      line-height: 1.75;
+    }
+
+    .quote p strong { color: var(--text); font-style: normal; }
+
+    /* IMAGE */
+    .img-wrap { margin-top: 24px; }
+    .img-wrap img { width: 100%; border-radius: 8px; border: 1px solid var(--border); display: block; }
+    .img-wrap figcaption { font-family: 'Josefin Sans', sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); margin-top: 8px; }
+
+    /* STACK */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tag {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: 4px;
+    }
+
+    hr { border: none; border-top: 1px solid var(--border); margin: 60px 0; }
+
+    /* PROGRESS */
+    .progress-list { margin-top: 24px; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--border); }
+
+    .progress-item {
+      display: grid;
+      grid-template-columns: 180px 1fr 120px;
+      align-items: center;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .progress-item__name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .progress-group-title {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dim);
+      padding: 20px 0 8px;
+    }
+
+    .progress-group + .progress-group {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    .progress-item__bar {
+      height: 3px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-item__fill {
+      height: 100%;
+      border-radius: 2px;
+      background: var(--accent);
+      transition: width 0.6s ease;
+    }
+
+    .progress-item__fill--zero {
+      background: rgba(255,255,255,0.1);
+      width: 0% !important;
+    }
+
+    .progress-item__status {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: right;
+    }
+
+    .status--done    { color: var(--accent); }
+    .status--waiting { color: var(--mid); }
+    .status--pending { color: var(--dim); }
+
+    /* DOC BLOCK */
+    .doc {
+      margin-top: 28px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .doc__header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .doc__header span {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .doc__dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    .doc__body {
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .doc__block {}
+
+    .doc__block-label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .doc__block-text {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.75;
+    }
+
+    .doc__block-text p + p { margin-top: 8px; }
+
+    .doc__block-text strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .doc__list {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .doc__list-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+
+    .doc__list-item::before {
+      content: '—';
+      color: var(--accent);
+      opacity: 0.5;
+      flex-shrink: 0;
+      font-size: 11px;
+      margin-top: 1px;
+    }
+
+    .doc__divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* FILLED CARD */
+    .fcard {
+      margin-top: 24px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 22px 24px;
+    }
+    .fcard--accent {
+      background: rgba(200,169,110,0.05);
+      border-color: rgba(200,169,110,0.15);
+    }
+    .fcard__label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 9px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 14px;
+    }
+    .fcard__grid { display: grid; gap: 16px; }
+    .fcard__grid--3 { grid-template-columns: repeat(3,1fr); }
+    .fcard__grid--2 { grid-template-columns: repeat(2,1fr); }
+    .fcard__cell { display: flex; flex-direction: column; gap: 5px; }
+    .fcard__cell-label { font-family: 'Josefin Sans',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); }
+    .fcard__cell-value { font-size: 13px; font-weight: 400; color: var(--text); line-height: 1.5; }
+    .fcard__divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 16px 0; }
+    .fcard__quote { font-family: 'Playfair Display',serif; font-size: 15px; font-style: italic; color: var(--mid); line-height: 1.75; }
+    .fcard__quote strong { color: var(--text); font-style: normal; }
+
+    /* Swatches */
+    .swatches { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
+    .swatch { display: flex; align-items: center; gap: 9px; }
+    .swatch__dot { width: 28px; height: 28px; border-radius: 6px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.1); }
+    .swatch__info { display: flex; flex-direction: column; gap: 2px; }
+    .swatch__name { font-family: 'Josefin Sans',sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
+    .swatch__hex { font-family: monospace; font-size: 11px; color: var(--mid); }
+
+    /* Vars */
+    .vars { display: flex; flex-direction: column; gap: 8px; }
+    .var-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .var-row:last-child { border-bottom: none; }
+    .var-name { font-family: monospace; font-size: 12px; color: var(--accent); }
+    .var-value { font-family: monospace; font-size: 11px; color: var(--mid); }
+
+    /* Fix rows */
+    .fix-row { display: grid; grid-template-columns: 1fr 16px 1fr; gap: 10px; align-items: center; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .fix-row:last-child { border-bottom: none; }
+    .fix-before { font-size: 11px; color: rgba(255,90,90,0.7); font-family: monospace; }
+    .fix-arrow { color: var(--dim); font-size: 11px; text-align: center; }
+    .fix-after { font-size: 11px; color: rgba(37,211,102,0.85); font-family: monospace; }
+
+    /* Phase rows */
+    .phase-row { display: grid; grid-template-columns: 32px 1fr; gap: 14px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .phase-row:last-child { border-bottom: none; }
+    .phase-num { width: 28px; height: 28px; border-radius: 50%; background: rgba(200,169,110,0.1); border: 1px solid rgba(200,169,110,0.22); display: flex; align-items: center; justify-content: center; font-family: 'Josefin Sans',sans-serif; font-size: 10px; font-weight: 700; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+    .phase-text { font-size: 13px; font-weight: 300; color: var(--mid); line-height: 1.65; }
+    .phase-text strong { color: var(--text); font-weight: 500; }
+
+    @media (max-width: 600px) {
+      .fcard__grid--3, .fcard__grid--2 { grid-template-columns: 1fr; }
+      .fix-row { grid-template-columns: 1fr; }
+      .fix-arrow { display: none; }
+    }
+
+    /* FOOTER */
+    .footer {
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .footer span { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .page { padding: 48px 24px 80px; }
+      .row { grid-template-columns: 1fr; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <p class="header__label">Relatório de Desenvolvimento · Jun 2026</p>
+    <h1 class="header__title">Arthur —<br><em>Landing Page</em></h1>
+    <div class="header__meta">
+      <span><strong>Produto</strong> Arthur · Advisor Cognitivo</span>
+      <span><strong>Ecossistema</strong> Meu Território · Egídio Dias</span>
+    </div>
+  </header>
+
+  <!-- 01 -->
+  <div class="s">
+    <p class="s__num">01 — Recebimento do Briefing</p>
+    <h2 class="s__title">O que foi recebido</h2>
+    <div class="s__body">
+      <p>Egídio Dias apresentou o Arthur com contexto completo de posicionamento, audiência e proposta de valor — suficiente para orientar todas as decisões que vieram depois.</p>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item__dot"></div><p><strong>Produto:</strong> Advisor cognitivo estratégico que opera via WhatsApp, sem instalação, ativação imediata.</p></div>
+      <div class="item"><div class="item__dot"></div><p><strong>Audiência:</strong> CEOs, C-Levels, founders e líderes de crescimento operando sob alta pressão decisória.</p></div>
+      <div class="item"><div class="item__dot"></div><p><strong>Proposta de valor:</strong> A próxima vantagem competitiva não virá de quem executa mais — mas de quem pensa com mais profundidade enquanto o ambiente acelera.</p></div>
+      <div class="item"><div class="item__dot"></div><p><strong>Audiência negativa</strong> explicitamente definida: curiosos sobre IA, uso casual, produtividade superficial.</p></div>
+    </div>
+    <div class="fcard">
+      <div class="fcard__grid fcard__grid--3">
+        <div class="fcard__cell">
+          <span class="fcard__cell-label">Produto</span>
+          <span class="fcard__cell-value">Advisor cognitivo via WhatsApp</span>
+        </div>
+        <div class="fcard__cell">
+          <span class="fcard__cell-label">Audiência</span>
+          <span class="fcard__cell-value">CEOs · C-Levels · Founders</span>
+        </div>
+        <div class="fcard__cell">
+          <span class="fcard__cell-label">Audiência negativa</span>
+          <span class="fcard__cell-value">Curiosos · Uso casual · Produtividade superficial</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 -->
+  <div class="s">
+    <p class="s__num">02 — Recebimento do Storytelling</p>
+    <h2 class="s__title">Documento estratégico de copy</h2>
+    <div class="s__body">
+      <p>Egídio entregou um documento completo de estrutura narrativa — visão estratégica, os erros a evitar, a estrutura ideal de conversão e a copy de cada bloco da página. É o briefing de persuasão que orientou todas as decisões de conteúdo.</p>
+    </div>
+    <div class="fcard fcard--accent">
+      <p class="fcard__quote">"A página <strong>não pode parecer</strong> ferramenta de IA, chatbot ou SaaS genérico. Ela precisa parecer uma <strong>infraestrutura cognitiva para líderes de alta complexidade.</strong>"</p>
+    </div>
+
+    <div class="doc">
+      <div class="doc__header">
+        <div class="doc__dot"></div>
+        <span>Landing Page Arthur — Documento recebido de Egídio Dias</span>
+      </div>
+      <div class="doc__body">
+
+        <div class="doc__block">
+          <p class="doc__block-label">Visão Estratégica</p>
+          <p class="doc__block-text">A página <strong>não pode parecer</strong> ferramenta de IA, chatbot, automação ou SaaS genérico. Ela precisa parecer <strong>uma infraestrutura cognitiva para líderes de alta complexidade</strong>. Arthur não deve ser vendido como "assistente" — deve ser percebido como presença estratégica, expansão cognitiva, clareza sob pressão.</p>
+        </div>
+
+        <hr class="doc__divider" />
+
+        <div class="doc__block">
+          <p class="doc__block-label">O erro que mataria a landing page</p>
+          <div class="doc__list">
+            <div class="doc__list-item">Explicar tecnologia demais</div>
+            <div class="doc__list-item">Explicar IA demais</div>
+            <div class="doc__list-item">Parecer ferramenta operacional ou automação de produtividade</div>
+            <div class="doc__list-item">Parecer "mais um GPT"</div>
+          </div>
+          <div class="doc__block-text" style="margin-top:12px;">A página precisa vender: <strong>consciência · sofisticação · profundidade · clareza · decisão · vantagem cognitiva.</strong></div>
+        </div>
+
+        <hr class="doc__divider" />
+
+        <div class="doc__block">
+          <p class="doc__block-label">Estrutura ideal — 9 blocos</p>
+          <div class="doc__list">
+            <div class="doc__list-item">Tensão</div>
+            <div class="doc__list-item">Diagnóstico</div>
+            <div class="doc__list-item">Nomeação do problema invisível</div>
+            <div class="doc__list-item">Novo modelo mental</div>
+            <div class="doc__list-item">Apresentação do Arthur</div>
+            <div class="doc__list-item">Como funciona</div>
+            <div class="doc__list-item">Casos e situações</div>
+            <div class="doc__list-item">Benefícios reais</div>
+            <div class="doc__list-item">Autoridade + chamada para ativação</div>
+          </div>
+        </div>
+
+        <hr class="doc__divider" />
+
+        <div class="doc__block">
+          <p class="doc__block-label">Hero — Headline principal</p>
+          <div class="doc__block-text">
+            <p><em>"O problema não é mais decidir.<br>É continuar decidindo sozinho<br>no mesmo nível de sempre."</em></p>
+          </div>
+        </div>
+
+        <hr class="doc__divider" />
+
+        <div class="doc__block">
+          <p class="doc__block-label">Problema Invisível</p>
+          <div class="doc__block-text">
+            <p>"Existe um ponto no crescimento em que o excesso de decisões começa a reduzir a clareza. Você continua executando. Mas sempre dentro do mesmo campo mental. Do mesmo padrão de leitura. Do mesmo repertório."</p>
+          </div>
+        </div>
+
+        <hr class="doc__divider" />
+
+        <div class="doc__block">
+          <p class="doc__block-label">Posicionamento do Arthur</p>
+          <div class="doc__block-text">
+            <p>"Arthur não foi criado para responder. Foi criado para ampliar a qualidade da decisão. Ele não substitui o líder — ele confronta, organiza e conduz o pensamento enquanto o jogo acontece."</p>
+          </div>
+        </div>
+
+        <hr class="doc__divider" />
+
+        <div class="doc__block">
+          <p class="doc__block-label">Direção visual</p>
+          <div class="doc__block-text">
+            <p>Apple · OpenAI · luxo executivo minimalista · cinema corporativo · sofisticação psicológica.<br>
+            Cores: preto, azul profundo, grafite, branco suave.<br>
+            Animações: suaves, sofisticadas, sem exagero, sensação de profundidade.</p>
+          </div>
+        </div>
+
+        <hr class="doc__divider" />
+
+        <div class="doc__block">
+          <p class="doc__block-label">Sensação final que a página deve transmitir</p>
+          <div class="doc__list">
+            <div class="doc__list-item">"Isso é diferente"</div>
+            <div class="doc__list-item">"Isso é sofisticado"</div>
+            <div class="doc__list-item">"Isso opera em outro nível"</div>
+            <div class="doc__list-item">"Isso foi construído para quem lidera ambientes complexos"</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="quote" style="margin-top: 24px;">
+      <p>"Escalar agora significa multiplicar esse problema. A pergunta certa não é <strong>'quando escalo'</strong> — é <strong>'o que preciso resolver antes de escalar'</strong>."<br>
+      <span style="font-family:'Josefin Sans',sans-serif; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; font-style:normal; color:var(--dim);">Arthur — conversa real fornecida por Egídio como prova de conceito</span></p>
+    </div>
+  </div>
+
+  <!-- 03 -->
+  <div class="s">
+    <p class="s__num">03 — Contexto do Projeto</p>
+    <h2 class="s__title">Meu Território · Ecossistema Executivo</h2>
+    <div class="s__body">
+      <p>Arthur nasce dentro do ecossistema Meu Território, fundado por Egídio Dias a partir de experiência real em mentorias, sparrings executivos e ambientes de decisão de alto nível.</p>
+      <p>Não foi criado para o mercado de massa. Foi criado para ambientes de alta exigência. Isso orientou cada decisão — visual, narrativa e técnica.</p>
+    </div>
+    <div class="fcard">
+      <div class="fcard__grid fcard__grid--2">
+        <div class="fcard__cell">
+          <span class="fcard__cell-label">Fundador</span>
+          <span class="fcard__cell-value">Egídio Dias</span>
+        </div>
+        <div class="fcard__cell">
+          <span class="fcard__cell-label">Ecossistema</span>
+          <span class="fcard__cell-value">Meu Território</span>
+        </div>
+        <div class="fcard__cell">
+          <span class="fcard__cell-label">Origem</span>
+          <span class="fcard__cell-value">Mentorias e sparrings executivos reais</span>
+        </div>
+        <div class="fcard__cell">
+          <span class="fcard__cell-label">Mercado</span>
+          <span class="fcard__cell-value">Alta exigência · Não mercado de massa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 -->
+  <div class="s">
+    <p class="s__num">05 — Definição do Branding</p>
+    <h2 class="s__title">Identidade visual aplicada</h2>
+    <div class="s__body">
+      <p>Egídio forneceu a referência visual do ecossistema Meu Território. A partir dela foram definidos todos os tokens de cor, tipografia e atmosfera da página.</p>
+    </div>
+
+    <figure class="img-wrap">
+      <img src="branding-ref.jpeg" alt="Referência de Branding — Meu Território" />
+      <figcaption>Referência visual · Meu Território</figcaption>
+    </figure>
+
+    <div class="items" style="margin-top: 20px;">
+      <div class="item"><div class="item__dot"></div><p><strong>Paleta:</strong> dark premium, azul profundo #0C1826 × dourado #C8A96E. Todos os tokens auditados acima de 4.5:1 (WCAG AA).</p></div>
+      <div class="item"><div class="item__dot"></div><p><strong>Tipografia:</strong> Playfair Display (headlines), Josefin Sans (labels/nav), Outfit (body).</p></div>
+      <div class="item"><div class="item__dot"></div><p><strong>Atmosfera:</strong> sofisticação executiva, mesma gravidade visual de Apple e OpenAI — sem excessos.</p></div>
+    </div>
+    <div class="fcard">
+      <p class="fcard__label">Paleta</p>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch__dot" style="background:#0C1826"></div><div class="swatch__info"><span class="swatch__name">Background</span><span class="swatch__hex">#0C1826</span></div></div>
+        <div class="swatch"><div class="swatch__dot" style="background:#C8A96E"></div><div class="swatch__info"><span class="swatch__name">Accent</span><span class="swatch__hex">#C8A96E</span></div></div>
+        <div class="swatch"><div class="swatch__dot" style="background:#F0EDE8"></div><div class="swatch__info"><span class="swatch__name">Text</span><span class="swatch__hex">#F0EDE8</span></div></div>
+        <div class="swatch"><div class="swatch__dot" style="background:#8899AA"></div><div class="swatch__info"><span class="swatch__name">Mid</span><span class="swatch__hex">#8899AA</span></div></div>
+      </div>
+      <hr class="fcard__divider" />
+      <p class="fcard__label">Tipografia</p>
+      <div class="fcard__grid fcard__grid--3">
+        <div class="fcard__cell">
+          <span class="fcard__cell-label">Headlines</span>
+          <span class="fcard__cell-value" style="font-family:'Playfair Display',serif;">Playfair Display</span>
+        </div>
+        <div class="fcard__cell">
+          <span class="fcard__cell-label">Labels / Nav</span>
+          <span class="fcard__cell-value" style="font-family:'Josefin Sans',sans-serif;letter-spacing:0.06em;">Josefin Sans</span>
+        </div>
+        <div class="fcard__cell">
+          <span class="fcard__cell-label">Body</span>
+          <span class="fcard__cell-value">Outfit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 -->
+  <div class="s">
+    <p class="s__num">06 — Implementação do Branding</p>
+    <h2 class="s__title">Variáveis, cores e tipografia aplicadas</h2>
+    <div class="s__body">
+      <p>A partir da referência visual do ecossistema Meu Território, foram criadas as variáveis de design — paleta, tipografia e tokens de espaçamento — e o branding foi implementado integralmente na página.</p>
+    </div>
+    <div class="fcard">
+      <p class="fcard__label">CSS Custom Properties</p>
+      <div class="vars">
+        <div class="var-row"><span class="var-name">--bg</span><span class="var-value">#0C1826</span></div>
+        <div class="var-row"><span class="var-name">--accent</span><span class="var-value">#C8A96E</span></div>
+        <div class="var-row"><span class="var-name">--text</span><span class="var-value">#F0EDE8</span></div>
+        <div class="var-row"><span class="var-name">--font-display</span><span class="var-value">Playfair Display</span></div>
+        <div class="var-row"><span class="var-name">--font-label</span><span class="var-value">Josefin Sans</span></div>
+        <div class="var-row"><span class="var-name">--font-body</span><span class="var-value">Outfit</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 -->
+  <div class="s">
+    <p class="s__num">07 — Teste de Acessibilidade</p>
+    <h2 class="s__title">Auditoria WCAG 2.1</h2>
+    <div class="s__body">
+      <p>Auditoria técnica completa de contraste e tamanhos de fonte. Três correções críticas aplicadas.</p>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item__dot"></div><p><strong>--text-dim corrigido:</strong> #4A5E70 (2.73:1 · falha AA) → #6B8299 (4.54:1 · aprovado). Afetava labels e timestamps em toda a página.</p></div>
+      <div class="item"><div class="item__dot"></div><p><strong>feat-tag:</strong> 9px → 11px. Abaixo do mínimo absoluto.</p></div>
+      <div class="item"><div class="item__dot"></div><p><strong>font-weight:</strong> 300 → 400 em chat bubbles, feature items e timestamps.</p></div>
+    </div>
+    <div class="fcard">
+      <p class="fcard__label">Correções aplicadas</p>
+      <div class="fix-row">
+        <span class="fix-before">--text-dim #4A5E70 · 2.73:1</span>
+        <span class="fix-arrow">→</span>
+        <span class="fix-after">--text-dim #6B8299 · 4.54:1 ✓</span>
+      </div>
+      <div class="fix-row">
+        <span class="fix-before">feat-tag 9px</span>
+        <span class="fix-arrow">→</span>
+        <span class="fix-after">feat-tag 11px ✓</span>
+      </div>
+      <div class="fix-row">
+        <span class="fix-before">font-weight 300</span>
+        <span class="fix-arrow">→</span>
+        <span class="fix-after">font-weight 400 ✓</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08 -->
+  <div class="s">
+    <p class="s__num">08 — Stack</p>
+    <h2 class="s__title">Tecnologias utilizadas</h2>
+    <div class="fcard">
+      <div class="vars">
+        <div class="var-row"><span class="var-name">Next.js 15</span><span class="var-value">Framework React — roteamento, SSR e build da aplicação</span></div>
+        <div class="var-row"><span class="var-name">React 19</span><span class="var-value">Componentes de UI e gerenciamento de estado</span></div>
+        <div class="var-row"><span class="var-name">TypeScript 5.8</span><span class="var-value">Tipagem estática — segurança e autocompletar no desenvolvimento</span></div>
+        <div class="var-row"><span class="var-name">Tailwind CSS 4</span><span class="var-value">Utilitários de estilo — base para o sistema de design</span></div>
+        <div class="var-row"><span class="var-name">GSAP 3</span><span class="var-value">Animações — ScrollTrigger, blur/fade e sequências do hero</span></div>
+        <div class="var-row"><span class="var-name">Stripe 17</span><span class="var-value">Checkout e cobrança recorrente</span></div>
+        <div class="var-row"><span class="var-name">Resend 4</span><span class="var-value">Envio de e-mails transacionais</span></div>
+        <div class="var-row"><span class="var-name">Vercel</span><span class="var-value">Deploy, CDN e preview automático por branch</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09 -->
+  <div class="s">
+    <p class="s__num">09 — Sessões Trabalhadas</p>
+    <h2 class="s__title">Hero</h2>
+    <div class="s__body">
+      <p>A sessão de trabalho focou inteiramente no hero — o elemento visual principal da página. A conversa real de Egídio com Arthur foi transformada em uma animação sequencial em 4 fases, substituindo qualquer mockup genérico por uma demonstração viva do produto.</p>
+    </div>
+    <div class="items">
+      <div class="item"><div class="item__dot"></div><p><strong>Fase 1 —</strong> Pílula "Marco está digitando" aparece centralizada com spring bounce.</p></div>
+      <div class="item"><div class="item__dot"></div><p><strong>Fase 2 —</strong> Card surge com skeleton lines douradas em scan e "Analisando contexto..." — Arthur raciocinando.</p></div>
+      <div class="item"><div class="item__dot"></div><p><strong>Fase 3 —</strong> Skeletons somem, área de chat expande suavemente.</p></div>
+      <div class="item"><div class="item__dot"></div><p><strong>Fase 4 —</strong> 9 mensagens reais aparecem a cada 1.8s com fade-in. Avatares individuais por bolha. Congela após a última mensagem.</p></div>
+    </div>
+    <div class="fcard">
+      <div class="phase-row">
+        <div class="phase-num">1</div>
+        <p class="phase-text"><strong>Pílula de digitação —</strong> "Marco está digitando para Arthur" com spring bounce</p>
+      </div>
+      <div class="phase-row">
+        <div class="phase-num">2</div>
+        <p class="phase-text"><strong>Raciocínio do Arthur —</strong> Skeleton scan dourado + "Analisando contexto..."</p>
+      </div>
+      <div class="phase-row">
+        <div class="phase-num">3</div>
+        <p class="phase-text"><strong>Abertura do chat —</strong> Skeletons somem, área expande com ease suave</p>
+      </div>
+      <div class="phase-row">
+        <div class="phase-num">4</div>
+        <p class="phase-text"><strong>Chat ao vivo —</strong> 9 mensagens reais a cada 1.8s, avatares individuais por bolha</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESSO DE DESIGN -->
+  <hr />
+  <div class="s">
+    <p class="s__num">Processo de Design</p>
+    <h2 class="s__title">Status das Seções</h2>
+
+    <div class="progress-list">
+
+      <!-- Foundation -->
+      <div class="progress-group">
+        <p class="progress-group-title">Foundation</p>
+        <div class="progress-item">
+          <span class="progress-item__name">Copy</span>
+          <div class="progress-item__bar"><div class="progress-item__fill" style="width:100%"></div></div>
+          <span class="progress-item__status status--waiting">100% · Aguardando validação</span>
+        </div>
+        <div class="progress-item" style="border-bottom:none;">
+          <span class="progress-item__name">Identidade Visual</span>
+          <div class="progress-item__bar"><div class="progress-item__fill progress-item__fill--zero"></div></div>
+          <span class="progress-item__status status--pending">Não iniciado</span>
+        </div>
+      </div>
+
+      <!-- Landing Page -->
+      <div class="progress-group">
+        <p class="progress-group-title">Landing Page</p>
+        <div class="progress-item">
+          <span class="progress-item__name">Hero</span>
+          <div class="progress-item__bar"><div class="progress-item__fill" style="width:100%"></div></div>
+          <span class="progress-item__status status--waiting">100% · Aguardando validação</span>
+        </div>
+        <div class="progress-item">
+          <span class="progress-item__name">Problema Invisível</span>
+          <div class="progress-item__bar"><div class="progress-item__fill" style="width:100%"></div></div>
+          <span class="progress-item__status status--waiting">100% · Aguardando validação</span>
+        </div>
+        <div class="progress-item">
+          <span class="progress-item__name">Posicionamento</span>
+          <div class="progress-item__bar"><div class="progress-item__fill" style="width:100%"></div></div>
+          <span class="progress-item__status status--waiting">100% · Aguardando validação</span>
+        </div>
+        <div class="progress-item">
+          <span class="progress-item__name">Como Funciona</span>
+          <div class="progress-item__bar"><div class="progress-item__fill" style="width:100%"></div></div>
+          <span class="progress-item__status status--waiting">100% · Aguardando validação</span>
+        </div>
+        <div class="progress-item">
+          <span class="progress-item__name">Features Premium</span>
+          <div class="progress-item__bar"><div class="progress-item__fill" style="width:100%"></div></div>
+          <span class="progress-item__status status--waiting">100% · Aguardando validação</span>
+        </div>
+        <div class="progress-item">
+          <span class="progress-item__name">Para Quem</span>
+          <div class="progress-item__bar"><div class="progress-item__fill" style="width:100%"></div></div>
+          <span class="progress-item__status status--waiting">100% · Aguardando validação</span>
+        </div>
+        <div class="progress-item">
+          <span class="progress-item__name">Autoridade</span>
+          <div class="progress-item__bar"><div class="progress-item__fill" style="width:100%"></div></div>
+          <span class="progress-item__status status--waiting">100% · Aguardando validação</span>
+        </div>
+        <div class="progress-item">
+          <span class="progress-item__name">Prova Social</span>
+          <div class="progress-item__bar"><div class="progress-item__fill" style="width:100%"></div></div>
+          <span class="progress-item__status status--waiting">100% · Depoimentos a validar</span>
+        </div>
+        <div class="progress-item">
+          <span class="progress-item__name">Oferta / Pricing</span>
+          <div class="progress-item__bar"><div class="progress-item__fill" style="width:100%"></div></div>
+          <span class="progress-item__status status--waiting">100% · Preço a confirmar</span>
+        </div>
+        <div class="progress-item">
+          <span class="progress-item__name">FAQ</span>
+          <div class="progress-item__bar"><div class="progress-item__fill" style="width:100%"></div></div>
+          <span class="progress-item__status status--waiting">100% · Conteúdo a validar</span>
+        </div>
+        <div class="progress-item" style="border-bottom:none;">
+          <span class="progress-item__name">Fechamento</span>
+          <div class="progress-item__bar"><div class="progress-item__fill" style="width:100%"></div></div>
+          <span class="progress-item__status status--waiting">100% · Aguardando validação</span>
+        </div>
+      </div>
+
+      <!-- Conversão -->
+      <div class="progress-group">
+        <p class="progress-group-title">Conversão</p>
+        <div class="progress-item" style="border-bottom:none;">
+          <span class="progress-item__name">Checkout</span>
+          <div class="progress-item__bar"><div class="progress-item__fill progress-item__fill--zero"></div></div>
+          <span class="progress-item__status status--pending">Não iniciado</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Arthur · <span>Meu Território</span> · Jun 2026</p>
+  </footer>
+
+</div>
+</body>
+</html>

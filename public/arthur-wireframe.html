@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arthur — Wireframe LP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Josefin+Sans:ital,wght@0,100;0,300;0,400;0,600;0,700;1,300&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:          #0C1826;
+      --bg-alt:      #111E2D;
+      --bg-dark:     #0A1520;
+      --surface:     #0F1D2B;
+      --surface-card:#14263A;
+      --border:      rgba(255,255,255,0.07);
+      --border-dk:   rgba(255,255,255,0.14);
+      --text:        #F0EDE8;
+      --text-mid:    #8899AA;
+      --text-dim:    #4A5E70;
+      --accent:      #C8A96E;
+      --wire:        rgba(255,255,255,0.10);
+      --placeholder: #1E3040;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ── WIREFRAME LABEL ── */
+    .wf-label {
+      position: fixed;
+      top: 12px; right: 16px;
+      background: var(--accent);
+      color: #0C1826;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      padding: 5px 12px;
+      border-radius: 3px;
+      z-index: 999;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTION LABELS (wireframe annotation) ── */
+    .section-tag {
+      display: inline-block;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border: 1px solid var(--border-dk);
+      padding: 3px 10px;
+      border-radius: 3px;
+      margin-bottom: 28px;
+    }
+
+    section {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .container--narrow {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(12,24,38,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-cta {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid var(--border-dk);
+      padding: 9px 22px;
+      border-radius: 3px;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      padding: 160px 0 100px;
+      background: var(--bg);
+      position: relative;
+    }
+
+    .hero-visual-placeholder { display: none; }
+
+    .hero-img-box {
+      width: 100%;
+      height: 360px;
+      background: var(--placeholder);
+      border: 2px dashed var(--border-dk);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 64px;
+    }
+
+    .hero-img-box::before { display: none; }
+
+    .img-placeholder-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      font-weight: 700;
+    }
+
+    .img-placeholder-desc {
+      font-size: 12px;
+      color: var(--text-dim);
+      text-align: center;
+      max-width: 420px;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 700;
+      font-style: normal;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 28px;
+      max-width: 700px;
+    }
+
+    .hero-headline strong { font-weight: 400; font-style: italic; color: var(--accent); }
+
+    .hero-subheadline {
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text-mid);
+      max-width: 540px;
+      margin-bottom: 48px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--text);
+      color: var(--bg);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 15px 36px;
+      border-radius: 3px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      color: var(--text-mid);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 15px 32px;
+      border-radius: 3px;
+      text-decoration: none;
+      border: 1px solid var(--border-dk);
+      cursor: pointer;
+    }
+
+    /* ── GENERIC SECTION TITLES ── */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+      color: var(--text);
+    }
+
+    .section-title strong { font-weight: 400; font-style: italic; }
+
+    .section-body {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text-mid);
+    }
+
+    .section-body p + p { margin-top: 20px; }
+
+    /* ── BLOCO 2 — PROBLEMA ── */
+    #problema { background: var(--bg-alt); }
+
+    /* ── BLOCO 3 — O QUE É ARTHUR ── */
+    #arthur { background: var(--bg); }
+
+    .feature-list {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      background: var(--surface-card);
+    }
+
+    .feature-icon {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border-dk);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .feature-item span {
+      font-size: 14px;
+      color: var(--text-mid);
+      font-weight: 300;
+    }
+
+    /* ── BLOCO 4 — COMO FUNCIONA / TIMELINE ── */
+    #como-funciona { background: var(--bg-alt); }
+
+    .timeline {
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: var(--border-dk);
+    }
+
+    .timeline-step {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .timeline-step:last-child { border-bottom: none; }
+
+    .step-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-dark);
+      border: 2px solid var(--border-dk);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-mid);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-content h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+
+    .step-content p {
+      font-size: 13px;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    /* ── DIÁLOGOS ── */
+    .dialogues {
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .dialogue-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px 28px;
+    }
+
+    .dialogue-card .msg {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .msg-line {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .msg-who {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      min-width: 60px;
+      padding-top: 2px;
+      color: var(--text-dim);
+    }
+
+    .msg-who.arthur { color: var(--text-mid); }
+
+    .msg-text {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--text-mid);
+    }
+
+    .msg-line.arthur-line .msg-text {
+      color: var(--text);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    /* ── BLOCO 5 — FEATURES ── */
+    #features { background: var(--bg); }
+
+    .features-grid {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .feat-card {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 28px 24px;
+      background: var(--surface-card);
+    }
+
+    .feat-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .feat-card p {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    .feat-tag {
+      display: inline-block;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    /* ── BLOCO 6 — PARA QUEM É ── */
+    #para-quem { background: var(--bg-dark); }
+
+    .profiles-grid {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .profile-chip {
+      background: var(--surface-card);
+      border: 1px solid var(--border-dk);
+      color: var(--text);
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      padding: 9px 20px;
+      border-radius: 40px;
+    }
+
+    .profile-chip.negative {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      text-decoration: line-through;
+      opacity: 0.5;
+    }
+
+    .profiles-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 28px 0;
+    }
+
+    .profiles-not-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+    }
+
+    /* ── BLOCO 7 — TESE / VANTAGEM ── */
+    #vantagem { background: var(--bg); }
+
+    .pullquote {
+      margin-top: 48px;
+      padding: 36px 44px;
+      border-left: 3px solid var(--accent);
+      background: var(--surface-card);
+      border-radius: 0 8px 8px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pullquote::before {
+      content: '\201C';
+      position: absolute;
+      top: -20px;
+      left: 28px;
+      font-family: 'Playfair Display', serif;
+      font-size: 140px;
+      color: var(--accent);
+      opacity: 0.07;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .pullquote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 23px;
+      font-weight: 400;
+      line-height: 1.75;
+      color: var(--text-mid);
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pullquote strong {
+      color: var(--text);
+      font-style: normal;
+    }
+
+    /* ── BLOCO 8 — AUTORIDADE ── */
+    #autoridade { background: var(--bg-alt); }
+
+    .authority-box {
+      margin-top: 40px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 40px;
+      background: var(--surface-card);
+      display: flex;
+      gap: 36px;
+      align-items: flex-start;
+    }
+
+    .authority-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--placeholder);
+      border: 2px dashed var(--border-dk);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .authority-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .authority-text .role {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .authority-text p {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--text-mid);
+    }
+
+    /* ── BLOCO 9 — FECHAMENTO ── */
+    #fechamento {
+      background: var(--bg-dark);
+      text-align: center;
+    }
+
+    #fechamento .section-title {
+      font-size: clamp(30px, 4.5vw, 52px);
+      max-width: 680px;
+      margin: 0 auto 28px;
+    }
+
+    #fechamento .section-body {
+      max-width: 540px;
+      margin: 0 auto 48px;
+      font-size: 15px;
+    }
+
+    #fechamento .btn-group { justify-content: center; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 36px 40px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      background: var(--bg-dark);
+    }
+
+    footer p {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    footer span { color: var(--accent); font-weight: 600; }
+
+    /* ── SECTION INDICATOR ── */
+    .section-indicator {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      z-index: 200;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-right: none;
+      border-radius: 8px 0 0 8px;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      width: 280px;
+      box-shadow: -2px 0 16px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .section-indicator.collapsed {
+      transform: translateY(-50%) translateX(280px);
+    }
+
+    .si-toggle {
+      width: 28px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-right: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 11px;
+      background: var(--bg-alt);
+      border-radius: 8px 0 0 8px;
+      transition: background 0.2s;
+      user-select: none;
+    }
+
+    .si-toggle:hover {
+      background: var(--bg-dark);
+    }
+
+    .si-toggle .si-arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .section-indicator.collapsed .si-toggle {
+      transform: translateX(-28px);
+      border-radius: 8px 0 0 8px;
+      border-right: none;
+      border: 1px solid var(--border);
+      border-right: none;
+      box-shadow: -2px 0 16px rgba(0,0,0,0.08);
+    }
+
+    .section-indicator.collapsed .si-arrow {
+      transform: rotate(180deg);
+    }
+
+    .si-body {
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .si-name {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .si-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    /* ── HERO AVAILABILITY ── */
+    .hero-availability {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 24px;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .avail-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #25D366;
+      flex-shrink: 0;
+      box-shadow: 0 0 6px rgba(37,211,102,0.5);
+    }
+
+    /* ── WHATSAPP MOCKUP ── */
+    .wpp-wrapper {
+      display: flex;
+      gap: 64px;
+      align-items: center;
+      max-width: 900px;
+    }
+
+    .wpp-context {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .wpp-context-label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .wpp-context-text {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--text-mid);
+    }
+
+    .wpp-phone {
+      width: 320px;
+      flex-shrink: 0;
+      background: #0B141A;
+      border-radius: 32px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 32px 64px rgba(0,0,0,0.5);
+    }
+
+    .wpp-notch {
+      width: 100px; height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      margin: 14px auto 0;
+    }
+
+    .wpp-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      background: #1F2C34;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .wpp-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #0C1826;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .wpp-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .wpp-name {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: #E9EDF0;
+    }
+
+    .wpp-status {
+      font-size: 11px;
+      color: #25D366;
+      font-weight: 400;
+    }
+
+    .wpp-chat {
+      padding: 16px 14px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: #0B141A;
+      min-height: 360px;
+    }
+
+    .wpp-date-label {
+      text-align: center;
+      font-size: 10px;
+      color: #8696A0;
+      background: rgba(255,255,255,0.05);
+      padding: 3px 10px;
+      border-radius: 6px;
+      align-self: center;
+      margin-bottom: 6px;
+      font-family: 'Josefin Sans', sans-serif;
+      letter-spacing: 0.06em;
+    }
+
+    .wpp-bubble {
+      max-width: 82%;
+      padding: 9px 12px 22px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.55;
+      position: relative;
+    }
+
+    .wpp-bubble--out {
+      background: #005C4B;
+      color: #E9EDF0;
+      align-self: flex-end;
+      border-bottom-right-radius: 3px;
+    }
+
+    .wpp-bubble--in {
+      background: #1F2C34;
+      color: #E9EDF0;
+      align-self: flex-start;
+      border-bottom-left-radius: 3px;
+    }
+
+    .wpp-time {
+      position: absolute;
+      bottom: 5px;
+      right: 10px;
+      font-size: 10px;
+      color: rgba(255,255,255,0.35);
+      font-family: 'Josefin Sans', sans-serif;
+    }
+
+    .wpp-typing {
+      align-self: flex-start;
+      background: #1F2C34;
+      border-radius: 8px;
+      border-bottom-left-radius: 3px;
+      padding: 12px 16px;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .wpp-typing span {
+      width: 6px; height: 6px;
+      background: #8696A0;
+      border-radius: 50%;
+      animation: wpp-bounce 1.2s infinite ease-in-out;
+    }
+    .wpp-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .wpp-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes wpp-bounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-4px); opacity: 1; }
+    }
+
+    /* ── DIVIDERS ── */
+    .spacer { height: 24px; }
+    .spacer--lg { height: 48px; }
+
+    /* ── HIGHLIGHT TEXT ── */
+    .text-accent { color: var(--accent); }
+    .text-dim { color: var(--text-dim); font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<div class="wf-label">Wireframe — v1</div>
+
+<div class="section-indicator" id="sectionIndicator">
+  <div class="si-toggle" id="siToggle"><span class="si-arrow">‹</span></div>
+  <div class="si-body">
+    <span class="si-name" id="siName">Abertura</span>
+    <span class="si-desc" id="siDesc">O visitante precisa sentir que essa página foi escrita para alguém no nível dele. O headline instala o gap entre a decisão que ele toma e a melhor decisão possível.</span>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">Arthur<span>.</span></div>
+  <a href="#fechamento" class="nav-cta">Ativar Arthur</a>
+</nav>
+
+
+<!-- ──────────────────────────────────────────
+     BLOCO 1 — HERO
+─────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-visual-placeholder"></div>
+  <div class="container">
+
+    <!-- Placeholder imagem cinematográfica -->
+    <div class="hero-img-box">
+      <span class="img-placeholder-label">[ Visual Hero ]</span>
+      <span class="img-placeholder-desc">Executivo sozinho · ambiente sofisticado · celular com Arthur · atmosfera psicológica de pressão cognitiva · Ref: Apple + OpenAI + cinema executivo premium</span>
+    </div>
+
+    <div class="section-tag">Bloco 1 — Abertura</div>
+
+    <p class="hero-eyebrow">Advisor Cognitivo Estratégico</p>
+
+    <h1 class="hero-headline">
+      Entre a decisão que você vai tomar<br>
+      e a melhor decisão possível, <strong>existe Arthur.</strong>
+    </h1>
+
+    <p class="hero-subheadline">
+      Arthur é um advisor cognitivo estratégico criado para empresários, CEOs e C-Levels que precisam sustentar clareza, profundidade e qualidade de decisão em ambientes de alta complexidade.
+    </p>
+
+    <div class="btn-group">
+      <a href="#fechamento" class="btn-primary">Ativar Arthur no WhatsApp</a>
+      <a href="#arthur" class="btn-ghost">Conhecer o Arthur</a>
+    </div>
+
+    <p class="hero-availability">
+      <span class="avail-dot"></span>
+      Disponível via WhatsApp · Sem instalação · Ativação imediata
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+     BLOCO 2 — TESE ESTRATÉGICA
+─────────────────────────────────────────── -->
+<section id="vantagem">
+  <div class="container--narrow">
+
+    <div class="section-tag">Bloco 2 — Tese Estratégica</div>
+
+    <h2 class="section-title">
+      A execução te trouxe até aqui.<br>
+      <strong>Ela não vai te levar<br>para o próximo nível.</strong>
+    </h2>
+
+    <div class="section-body">
+      <p>Você acelerou. Seu negócio cresceu. As decisões ficaram mais complexas, mais rápidas, mais custosas.</p>
+      <p>Mas o modelo mental que sustentou essa fase — o repertório, os padrões, os atalhos que funcionaram até aqui — ainda é o mesmo.</p>
+      <p>É exatamente nesse gap que Arthur atua.</p>
+    </div>
+
+    <div class="pullquote">
+      <p>A próxima vantagem competitiva não vai ser<br>
+      <strong>quem executa mais.</strong><br>
+      Vai ser quem consegue <strong>pensar com mais profundidade</strong><br>
+      enquanto o ambiente acelera.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+     BLOCO 3 — O PROBLEMA INVISÍVEL
+─────────────────────────────────────────── -->
+<section id="problema">
+  <div class="container--narrow">
+
+    <div class="section-tag">Bloco 3 — O Problema Invisível</div>
+
+    <h2 class="section-title">
+      Existe um ponto no crescimento<br>
+      em que o excesso de decisões<br>
+      <strong>começa a reduzir a clareza.</strong>
+    </h2>
+
+    <div class="section-body">
+      <p>Você continua executando. Continua conduzindo. Continua resolvendo.</p>
+      <p>Mas sempre dentro do mesmo campo mental.<br>Do mesmo padrão de leitura. Do mesmo repertório. Do mesmo tipo de decisão.</p>
+      <p>E é aqui que muitos líderes começam a travar sem perceber.</p>
+      <p>Não por falta de esforço. Mas porque o crescimento do negócio começou a exigir um nível de consciência, leitura e estrutura cognitiva maior do que aquele que sustentou a fase anterior.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+     BLOCO 3 — O QUE É O ARTHUR
+─────────────────────────────────────────── -->
+<section id="arthur">
+  <div class="container--narrow">
+
+    <div class="section-tag">Bloco 4 — Posicionamento</div>
+
+    <h2 class="section-title">
+      Arthur não foi criado para responder.<br>
+      Foi criado para <strong>ampliar<br>a qualidade da decisão.</strong>
+    </h2>
+
+    <div class="section-body">
+      <p>Arthur é um advisor cognitivo estratégico que atua entre decisões, conflitos, pressão, expansão e momentos críticos do negócio.</p>
+      <p>Ele não substitui o líder. Ele confronta, organiza e conduz o pensamento enquanto o jogo acontece.</p>
+    </div>
+
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-icon"></div>
+        <span>Reduzir ruído cognitivo</span>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"></div>
+        <span>Estruturar decisões complexas</span>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"></div>
+        <span>Identificar pontos cegos</span>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"></div>
+        <span>Sustentar clareza sob pressão</span>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"></div>
+        <span>Evitar repetição mental</span>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"></div>
+        <span>Transformar excesso de informação em direção</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+     BLOCO 4 — COMO FUNCIONA
+─────────────────────────────────────────── -->
+<section id="como-funciona">
+  <div class="container">
+
+    <div class="section-tag">Bloco 5 — Como Funciona</div>
+
+    <h2 class="section-title">
+      Uma presença cognitiva<br>
+      <strong>dentro da rotina executiva.</strong>
+    </h2>
+
+    <!-- Timeline -->
+    <div class="timeline">
+      <div class="timeline-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>O líder entra em diálogo</h4>
+          <p>Uma situação, decisão pendente, conflito ou pressão específica</p>
+        </div>
+      </div>
+      <div class="timeline-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Arthur organiza o cenário</h4>
+          <p>Estrutura o contexto, identifica variáveis e remove ruído</p>
+        </div>
+      </div>
+      <div class="timeline-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Arthur confronta distorções</h4>
+          <p>Nomeia pontos cegos, padrões repetitivos e vieses de decisão</p>
+        </div>
+      </div>
+      <div class="timeline-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Arthur estrutura caminhos</h4>
+          <p>Apresenta perspectivas estratégicas com clareza e profundidade</p>
+        </div>
+      </div>
+      <div class="timeline-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Arthur acompanha decisões</h4>
+          <p>Mantém memória contextual e evolui junto com o negócio</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WhatsApp Mockup -->
+    <div class="spacer--lg"></div>
+    <div class="wpp-wrapper">
+
+      <div class="wpp-context">
+        <p class="wpp-context-label">Como funciona na prática</p>
+        <p class="wpp-context-text">Arthur opera pelo WhatsApp. Você abre uma conversa, descreve a situação, e ele entra no raciocínio junto com você — sem fricção, sem onboarding, sem curva de aprendizado.</p>
+      </div>
+
+      <div class="wpp-phone">
+        <div class="wpp-notch"></div>
+
+        <div class="wpp-header">
+          <div class="wpp-avatar">A</div>
+          <div class="wpp-info">
+            <span class="wpp-name">Arthur</span>
+            <span class="wpp-status">online agora</span>
+          </div>
+        </div>
+
+        <div class="wpp-chat">
+
+          <div class="wpp-date-label">Hoje</div>
+
+          <div class="wpp-bubble wpp-bubble--out">
+            Estou pensando em escalar agora. Fechei bem esse trimestre e sinto que é a hora.
+            <span class="wpp-time">09:14</span>
+          </div>
+
+          <div class="wpp-bubble wpp-bubble--in">
+            Escalar agora pode amplificar um problema que ainda não está estruturado. Qual é o gargalo que você já sabe que existe mas ainda não resolveu?
+            <span class="wpp-time">09:14</span>
+          </div>
+
+          <div class="wpp-bubble wpp-bubble--out">
+            O time comercial ainda não está bem calibrado.
+            <span class="wpp-time">09:15</span>
+          </div>
+
+          <div class="wpp-bubble wpp-bubble--in">
+            Então escalar agora significa multiplicar esse problema. A pergunta certa não é "quando escalo" — é "o que preciso resolver antes de escalar".
+            <span class="wpp-time">09:15</span>
+          </div>
+
+          <div class="wpp-typing">
+            <span></span><span></span><span></span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+     BLOCO 5 — FEATURES PREMIUM
+─────────────────────────────────────────── -->
+<section id="features">
+  <div class="container">
+
+    <div class="section-tag">Bloco 6 — Features Premium</div>
+
+    <h2 class="section-title">
+      O Arthur não espera ser acionado.<br>
+      <strong>Ele acompanha o jogo.</strong>
+    </h2>
+
+    <div class="features-grid">
+
+      <div class="feat-card">
+        <span class="feat-tag">Semanal</span>
+        <h4>Weekly Executive Brief</h4>
+        <p>Resumo semanal das decisões, gargalos e padrões do usuário.</p>
+      </div>
+
+      <div class="feat-card">
+        <span class="feat-tag">Tempo Real</span>
+        <h4>Real-Time Alerts</h4>
+        <p>Alertas estratégicos baseados em incoerência, risco ou repetição.</p>
+      </div>
+
+      <div class="feat-card">
+        <span class="feat-tag">Raciocínio</span>
+        <h4>Think-With-Me Mode</h4>
+        <p>Modo de raciocínio guiado para estruturar decisões complexas.</p>
+      </div>
+
+      <div class="feat-card">
+        <span class="feat-tag">Painel</span>
+        <h4>Business Dashboard</h4>
+        <p>Painel executivo com prioridades, gargalos e decisões abertas.</p>
+      </div>
+
+      <div class="feat-card">
+        <span class="feat-tag">Análise</span>
+        <h4>Data Analysis</h4>
+        <p>Leitura estratégica de planilhas, relatórios e dados do negócio.</p>
+      </div>
+
+      <div class="feat-card">
+        <span class="feat-tag">Memória</span>
+        <h4>Decision Memory</h4>
+        <p>Arthur lembra padrões e decisões passadas para calibrar continuamente.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+     BLOCO 6 — PARA QUEM É
+─────────────────────────────────────────── -->
+<section id="para-quem">
+  <div class="container--narrow">
+
+    <div class="section-tag">Bloco 7 — Filtro de Audiência</div>
+
+    <h2 class="section-title">
+      O Arthur foi criado<br>
+      <strong>para quem opera sob pressão.</strong>
+    </h2>
+
+    <div class="profiles-grid">
+      <span class="profile-chip">CEOs</span>
+      <span class="profile-chip">C-Levels</span>
+      <span class="profile-chip">Empresários</span>
+      <span class="profile-chip">Founders</span>
+      <span class="profile-chip">Líderes de crescimento</span>
+      <span class="profile-chip">Executivos sob pressão decisória</span>
+    </div>
+
+    <div class="profiles-divider"></div>
+
+    <p class="profiles-not-label">Não é para</p>
+    <div class="profiles-grid">
+      <span class="profile-chip negative">Curiosos sobre IA</span>
+      <span class="profile-chip negative">Produtividade superficial</span>
+      <span class="profile-chip negative">Uso casual</span>
+      <span class="profile-chip negative">Respostas rápidas sem profundidade</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+     BLOCO 8 — AUTORIDADE
+─────────────────────────────────────────── -->
+<section id="autoridade">
+  <div class="container">
+
+    <div class="section-tag">Bloco 8 — Autoridade</div>
+
+    <h2 class="section-title">
+      Construído dentro do<br>
+      <strong>ecossistema Meu Território.</strong>
+    </h2>
+
+    <div class="authority-box">
+      <div class="authority-avatar">Foto</div>
+      <div class="authority-text">
+        <h3>Egidio Dias</h3>
+        <p class="role">Fundador · Meu Território</p>
+        <p>Arthur nasce da experiência de mentorias, sparrings executivos e ambientes reais de decisão conduzidos junto a empresários, CEOs e líderes de crescimento.</p>
+        <div class="spacer"></div>
+        <p>Não foi criado para o mercado de massa.<br>Foi criado para ambientes de alta exigência.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ──────────────────────────────────────────
+     BLOCO 9 — FECHAMENTO / CTA FINAL
+─────────────────────────────────────────── -->
+<section id="fechamento">
+  <div class="container">
+
+    <div class="section-tag" style="display:block;text-align:center;margin: 0 auto 28px;">Bloco 9 — Fechamento</div>
+
+    <h2 class="section-title">
+      Você não precisa de mais informação.<br>
+      Precisa aumentar<br>
+      <strong>a qualidade da decisão.</strong>
+    </h2>
+
+    <div class="section-body">
+      <p>Arthur não substitui sua inteligência. Ele amplia sua capacidade de leitura, organização e clareza em momentos onde pressão, velocidade e complexidade começam a reduzir profundidade.</p>
+      <div class="spacer"></div>
+      <p>Porque no nível em que você opera, não é sobre decidir mais.<br>
+      É sobre não continuar decidindo sozinho dentro do mesmo padrão de sempre.</p>
+    </div>
+
+    <div class="btn-group">
+      <a href="#" class="btn-primary">Ativar Arthur</a>
+      <a href="#" class="btn-ghost">Entrar no ecossistema Arthur</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>Arthur · <span>Meu Território</span> · Ecossistema Executivo</p>
+</footer>
+
+<script>
+  const sections = [
+    {
+      id: 'hero',
+      label: 'Abertura',
+      desc: 'O visitante precisa sentir que essa página foi escrita para alguém no nível dele. O headline instala o gap entre a decisão que ele toma e a melhor decisão possível.'
+    },
+    {
+      id: 'vantagem',
+      label: 'Tese Estratégica',
+      desc: 'Antes de aceitar que tem um problema, o CEO precisa entender que o mundo mudou. Essa seção legitima o gap antes de apresentar qualquer solução.'
+    },
+    {
+      id: 'problema',
+      label: 'Problema Invisível',
+      desc: 'Fazer o CEO se reconhecer na situação descrita. Ele precisa sentir que alguém nomeou algo que ele vivia mas não tinha palavras para descrever.'
+    },
+    {
+      id: 'arthur',
+      label: 'Posicionamento',
+      desc: 'Apresentar Arthur como resposta ao gap sem soar como ferramenta ou software. A percepção precisa ser de presença estratégica, não de produto.'
+    },
+    {
+      id: 'como-funciona',
+      label: 'Como Funciona',
+      desc: 'Tangibilizar o que é abstrato. Os diálogos são o ponto mais próximo que o visitante vai chegar de usar Arthur antes de ativar.'
+    },
+    {
+      id: 'features',
+      label: 'Features',
+      desc: 'Mostrar profundidade e sofisticação sem cair no tom de catálogo de software. Cada feature é uma dimensão da presença do Arthur, não uma funcionalidade.'
+    },
+    {
+      id: 'para-quem',
+      label: 'Para Quem',
+      desc: 'Criar identidade no visitante certo e afastar o errado. Quem se vê nos perfis positivos precisa sentir que isso foi construído especificamente para ele.'
+    },
+    {
+      id: 'autoridade',
+      label: 'Autoridade',
+      desc: 'Conectar Arthur a experiência real de decisão, não a laboratório de IA. A credibilidade vem de quem construiu e do contexto onde foi gerado.'
+    },
+    {
+      id: 'fechamento',
+      label: 'Fechamento',
+      desc: 'O visitante chegou até aqui. A função é converter sem pressionar. Termina com uma decisão clara, não com um resumo do que já foi dito.'
+    },
+  ];
+
+  const siName = document.getElementById('siName');
+  const siDesc = document.getElementById('siDesc');
+  const indicator = document.getElementById('sectionIndicator');
+  const toggle = document.getElementById('siToggle');
+
+  toggle.addEventListener('click', () => {
+    indicator.classList.toggle('collapsed');
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const match = sections.find(s => s.id === entry.target.id);
+        if (match) {
+          siName.textContent = match.label;
+          siDesc.textContent = match.desc;
+        }
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => {
+    const el = document.getElementById(s.id);
+    if (el) observer.observe(el);
+  });
+</script>
+</body>
+</html>
