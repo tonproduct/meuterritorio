@@ -319,7 +319,7 @@ export default function Home() {
             <strong>e inicie sua conversa.</strong>
           </h2>
           <p className="section-body" style={{ marginBottom: 40 }}>
-            Após o envio, entraremos em contato para liberar seu acesso ao Arthur via WhatsApp.
+            Preencha o formulário e ganhe acesso gratuito ao Arthur via WhatsApp.
           </p>
           <FormContato />
         </div>

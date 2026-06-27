@@ -17,7 +17,7 @@ export default function Nav() {
         Arthur<span>.</span>
         <span className="nav-logo__sub">Advisor Cognitivo Estratégico</span>
       </div>
-      <a href="#fechamento" className="nav-cta">
+      <a href="#ativacao" className="nav-cta">
         Ativar Arthur
       </a>
     </nav>
