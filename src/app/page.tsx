@@ -1,4 +1,3 @@
-import SectionIndicator from './components/SectionIndicator'
 import Nav from './components/Nav'
 import HeroPhone from './components/HeroPhone'
 import ScrollAnimations from './components/ScrollAnimations'
@@ -10,7 +9,6 @@ export default function Home() {
   return (
     <>
       <ScrollAnimations />
-      <SectionIndicator />
       <Nav />
 
       {/* ── BLOCO 1 — HERO ── */}
