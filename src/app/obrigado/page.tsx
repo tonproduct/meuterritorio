@@ -3,14 +3,19 @@ export default function ObrigadoPage() {
     <div className="obrigado-root">
 
       {/* ── NAV MINIMAL ── */}
-      <header className="checkout-nav">
+      <header className="checkout-nav" style={{ position: 'relative' }}>
         <a href="/" className="checkout-nav__back">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M13 8H3M7 4l-4 4 4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
           Voltar ao início
         </a>
-        <img src="/logo.png" alt="Meu Território" className="checkout-nav__logo" />
+        <img
+          src="/logo.png"
+          alt="Meu Território"
+          className="checkout-nav__logo"
+          style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}
+        />
         <span />
       </header>
 
@@ -44,9 +49,8 @@ export default function ObrigadoPage() {
           rel="noopener noreferrer"
           className="btn-primary obrigado-cta"
         >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M9 1C4.6 1 1 4.6 1 9c0 1.5.4 2.9 1.1 4.1L1 17l3.9-1.1A8 8 0 109 1z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round"/>
-            <path d="M6.5 6.8c.2.5.5 1 .9 1.4.5.5 1 .8 1.5.9l.5-.5c.2-.2.4-.2.6-.1l1.4.7c.2.1.3.3.2.5-.1.9-.9 1.6-1.8 1.5a6 6 0 01-5.1-5.1c-.1-.9.6-1.7 1.5-1.8.2 0 .4.1.5.2l.7 1.4c.1.2 0 .4-.1.6l-.8.3z" fill="currentColor"/>
+          <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 2C8.28 2 2 8.28 2 16c0 2.44.65 4.73 1.78 6.72L2 30l7.5-1.75A13.93 13.93 0 0016 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm0 25.5a11.45 11.45 0 01-5.83-1.59l-.42-.25-4.35 1.01 1.04-4.24-.28-.44A11.5 11.5 0 1116 27.5zm6.3-8.6c-.34-.17-2.02-1-2.33-1.11-.31-.11-.54-.17-.77.17-.23.34-.88 1.11-1.08 1.34-.2.23-.4.26-.74.09-.34-.17-1.44-.53-2.74-1.69a10.3 10.3 0 01-1.9-2.36c-.2-.34-.02-.52.15-.69.15-.15.34-.4.51-.6.17-.2.23-.34.34-.57.11-.23.06-.43-.03-.6-.09-.17-.77-1.86-1.06-2.55-.28-.67-.56-.58-.77-.59h-.66c-.23 0-.6.09-.91.43-.31.34-1.2 1.17-1.2 2.85s1.23 3.3 1.4 3.53c.17.23 2.42 3.7 5.87 5.19.82.35 1.46.56 1.96.72.82.26 1.57.22 2.16.13.66-.1 2.02-.83 2.31-1.62.28-.8.28-1.48.2-1.62-.09-.14-.31-.23-.65-.4z"/>
           </svg>
           Conversar com o Arthur agora
         </a>
