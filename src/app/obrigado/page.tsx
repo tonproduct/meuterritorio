@@ -39,7 +39,7 @@ export default function ObrigadoPage() {
 
         {/* CTA principal */}
         <a
-          href="https://wa.me/5511999999999"
+          href="https://wa.me/5551991945384"
           target="_blank"
           rel="noopener noreferrer"
           className="btn-primary obrigado-cta"
