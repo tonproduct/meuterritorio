@@ -4,6 +4,7 @@ import HeroPhone from './components/HeroPhone'
 import ScrollAnimations from './components/ScrollAnimations'
 import TestimonialsCarousel from './components/TestimonialsCarousel'
 import FaqAccordion from './components/FaqAccordion'
+import FormContato from './components/FormContato'
 
 export default function Home() {
   return (
@@ -37,8 +38,8 @@ export default function Home() {
             </p>
 
             <div className="btn-group">
-              <a href="/checkout" className="btn-primary">
-                Ativar Arthur no WhatsApp
+              <a href="#ativacao" className="btn-primary">
+                Quero conversar com o Arthur
               </a>
               <a href="#arthur" className="btn-ghost">
                 Conhecer o Arthur
@@ -309,82 +310,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── ATIVAÇÃO — PRICING + FORM ── */}
+      {/* ── ATIVAÇÃO — FORMULÁRIO ── */}
       <section id="ativacao">
-        <div className="container">
-          <div className="ativacao-layout">
-
-            {/* Coluna esquerda — oferta */}
-            <div>
-              <p className="ativacao-form-title">Ativar Arthur</p>
-              <h2 className="section-title" style={{ fontSize: 'clamp(28px, 3vw, 40px)' }}>
-                Um advisor cognitivo<br />
-                <strong>disponível agora.</strong>
-              </h2>
-
-              <div className="offer-price">
-                <span className="offer-price__label">Acesso mensal</span>
-                <div className="offer-price__value">
-                  <span className="offer-price__currency">R$</span>
-                  <span className="offer-price__amount">497</span>
-                  <span className="offer-price__period">/mês</span>
-                </div>
-              </div>
-
-              <ul className="offer-includes">
-                {[
-                  'Acesso direto via WhatsApp, sem limite de mensagens',
-                  'Weekly Executive Brief toda semana',
-                  'Real-Time Alerts estratégicos',
-                  'Análise de planilhas e relatórios do negócio',
-                  'Memória contextual acumulada',
-                  'Think-With-Me Mode para decisões complexas',
-                ].map((item) => (
-                  <li key={item}>
-                    <span className="offer-check">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-
-              <div style={{ marginTop: 28, display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <a href="/checkout" className="btn-primary" style={{ textAlign: 'center' }}>
-                  Ativar Arthur agora
-                </a>
-                <p className="offer-risk">
-                  Cancele quando quiser · Sem fidelidade · Sem cartão salvo
-                </p>
-              </div>
-            </div>
-
-            {/* Coluna direita — dúvidas */}
-            <div className="ativacao-form-wrap">
-              <p className="ativacao-form-title">Tem alguma dúvida?</p>
-              <form className="ativacao-form">
-                <div className="form-field">
-                  <label htmlFor="nome">Nome</label>
-                  <input id="nome" type="text" placeholder="Seu nome" />
-                </div>
-                <div className="form-field">
-                  <label htmlFor="email">E-mail</label>
-                  <input id="email" type="email" placeholder="seu@email.com" />
-                </div>
-                <div className="form-field">
-                  <label htmlFor="duvida">Dúvida</label>
-                  <textarea
-                    id="duvida"
-                    rows={4}
-                    placeholder="O que você quer entender melhor antes de ativar?"
-                  />
-                </div>
-                <button type="submit" className="btn-ghost" style={{ width: '100%', textAlign: 'center' }}>
-                  Enviar dúvida
-                </button>
-                <p className="form-note">Respondemos em até 24h</p>
-              </form>
-            </div>
-
-          </div>
+        <div className="container--narrow">
+          <p className="ativacao-form-title">Fale com o Arthur</p>
+          <h2 className="section-title" style={{ fontSize: 'clamp(28px, 3vw, 40px)' }}>
+            Preencha o formulário<br />
+            <strong>e inicie sua conversa.</strong>
+          </h2>
+          <p className="section-body" style={{ marginBottom: 40 }}>
+            Após o envio, entraremos em contato para liberar seu acesso ao Arthur via WhatsApp.
+          </p>
+          <FormContato />
         </div>
       </section>
 
@@ -424,8 +361,8 @@ export default function Home() {
           </div>
 
           <div className="btn-group" style={{ justifyContent: 'center' }}>
-            <a href="/checkout" className="btn-primary">
-              Ativar Arthur
+            <a href="#ativacao" className="btn-primary">
+              Quero conversar com o Arthur
             </a>
             <a href="#arthur" className="btn-ghost">
               Entender o Arthur
