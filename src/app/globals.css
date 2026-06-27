@@ -2512,16 +2512,69 @@ footer span {
 @media (max-width: 900px) {
   .hero-layout {
     grid-template-columns: 1fr;
-    gap: 56px;
+    gap: 48px;
   }
 
-  .hero-visual {
-    order: -1;
-  }
+  /* texto primeiro, visual depois */
+  .hero-copy { order: 1; }
+  .hero-visual { order: 2; }
 
   .hero-card {
     max-width: 100%;
   }
+
+  .features-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav { padding: 16px 20px; }
+  .container, .container--narrow { padding: 0 20px; }
+  section { padding: 64px 0; }
+  #hero { padding: 100px 0 64px; }
+
+  /* Hero */
+  .hero-headline { font-size: 28px; }
+  .hero-subheadline { font-size: 15px; margin-bottom: 36px; }
+  .hero-logo { height: 40px; }
+
+  /* Botões — empilha e ocupa largura total */
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .btn-primary,
+  .btn-ghost {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Features */
+  .features-grid { grid-template-columns: 1fr; }
+
+  /* Narrative cards */
+  .narrative-card {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  /* Authority */
+  .authority-box { flex-direction: column; padding: 28px 24px; }
+
+  /* Timeline */
+  .timeline-step { gap: 20px; }
+
+  /* Phone */
+  .wpp-phone { width: 100%; max-width: 300px; align-self: center; }
+  .wpp-wrapper { flex-direction: column; gap: 40px; }
+
+  /* Seção ativação */
+  .ativacao-form-title { margin-bottom: 16px; }
+
+  /* Fechamento */
+  #fechamento .btn-group { flex-direction: column; align-items: stretch; }
 }
 
 /* ── DRAWER ── */
@@ -3066,15 +3119,6 @@ footer span {
   .checkout-nav { padding: 16px 24px; }
 }
 
-@media (max-width: 640px) {
-  .nav { padding: 16px 24px; }
-  .container, .container--narrow { padding: 0 24px; }
-  section { padding: 72px 0; }
-  #hero { padding: 120px 0 72px; }
-  .authority-box { flex-direction: column; }
-  .wpp-phone { width: 100%; max-width: 320px; align-self: center; }
-  .wpp-wrapper { flex-direction: column; gap: 40px; }
-}
 
 /* ════════════════════════════════
    OBRIGADO PAGE
