@@ -25,8 +25,9 @@ export default function Home() {
 
             <h1 className="hero-headline">
               <span style={{ display: 'block' }}>Entre a decisão que você</span>
-              <span style={{ display: 'block' }}>vai tomar e a melhor decisão</span>
-              <span style={{ display: 'block' }}>possível, <strong>existe Arthur.</strong></span>
+              <span style={{ display: 'block' }}>vai tomar e a melhor</span>
+              <span style={{ display: 'block' }}>decisão possível,</span>
+              <span style={{ display: 'block' }}><strong>existe Arthur.</strong></span>
             </h1>
 
             <p className="hero-subheadline">
